@@ -339,9 +339,9 @@
 	function initChatView() {
 		isFrame = window.location != window.parent.location;
 		mode = $page.url.searchParams.get('mode') || '';
-		// initial condition
-		isPersistLogClosed = false;
-		isInstantLogClosed = false;
+		// initial condition - 默认隐藏日志面板
+		isPersistLogClosed = true;
+		isInstantLogClosed = true;
 		resizeChatWindow();
 	}
 
