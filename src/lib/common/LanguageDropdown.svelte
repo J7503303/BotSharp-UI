@@ -22,7 +22,7 @@
 	}
 
 	onMount(() => {
-		localStorage.getItem("I18N_LANGUAGE") || "en";
+		selectedLang = localStorage.getItem("I18N_LANGUAGE") || "zh";
 	})
 </script>
 

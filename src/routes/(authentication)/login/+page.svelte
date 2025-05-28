@@ -62,7 +62,7 @@
 		e.preventDefault();
 		await getToken(username, password, () => {
 			isOpen = true;
-			msg = 'Authentication success';
+			msg = $_('Authentication success');
 			status = 'success';
 			const redirectUrl = $page.url.searchParams.get('redirect');
 			isSubmitting = false;
@@ -76,7 +76,7 @@
 			isSubmitting = false;
 			isOpen = true;
 			status = 'danger';
-			msg = 'Incorrect user name or password.'
+			msg = $_('Incorrect user name or password.')
 			setTimeout(() => {
 				isOpen = false;
 				status = '';
@@ -113,7 +113,7 @@
 							<Col class="col-7">
 								<div class="text-primary p-4">
 									<h5 class="text-primary">{$_('Welcome Back !')}</h5>
-									<p>Sign in to continue to {PUBLIC_BRAND_NAME}.</p>
+									<p>{$_('Sign in to continue to')} {PUBLIC_BRAND_NAME}.</p>
 								</div>
 							</Col>
 							<Col class="col-5 align-self-end">
@@ -142,25 +142,25 @@
 							<Alert {isOpen} color={status}>{msg}</Alert>
 							<Form class="form-horizontal" on:submit={onSubmit}>
 								<div class="mb-3">
-									<Label for="username" class="form-label">Username</Label>
+									<Label for="username" class="form-label">{$_('Username')}</Label>
 									<Input
 										type="text"
 										class="form-control"
 										id="username"
-										placeholder="Enter username"
+										placeholder={$_('Enter username')}
 										disabled={isSubmitting}
 										bind:value={username}
 									/>
 								</div>
 
 								<div class="mb-3">
-									<Label class="form-label" for="user-password">Password</Label>
+									<Label class="form-label" for="user-password">{$_('Password')}</Label>
 									<div class="input-group auth-pass-inputgroup">
 										<Input
 											type="password"
 											class="form-control"
 											id="user-password"
-											placeholder="Enter password"
+											placeholder={$_('Enter password')}
 											disabled={isSubmitting}
 											aria-label="Password"
 											aria-describedby="password-addon"
@@ -186,7 +186,7 @@
 										disabled={isSubmitting}
 										bind:checked={isRememberMe}
 									/>
-									<Label class="form-check-label" for="remember-check">Remember me</Label>
+									<Label class="form-check-label" for="remember-check">{$_('Remember me')}</Label>
 								</div>
 
 								<div class="mt-3 d-grid">
@@ -196,12 +196,12 @@
 										class="waves-effect waves-light"
 										type="submit"
 									>
-										{!isSubmitting ? 'Log In' : 'Log In...'}
+										{!isSubmitting ? $_('Log In') : $_('Log In...')}
 									</Button>
 								</div>
 								{#if PUBLIC_AUTH_ENABLE_SSO == 'true'}
 								<div class="mt-4 text-center">
-									<h5 class="font-size-14 mb-3">Sign in with</h5>
+									<h5 class="font-size-14 mb-3">{$_('Sign in with')}</h5>
 
 									<ul class="list-inline">
 										<li class="list-inline-item">
@@ -237,7 +237,7 @@
 								{#if PUBLIC_AUTH_ENABLE_FIND_PWD == 'true' }
 								<div class="mt-4 text-center">
 									<Link href="recoverpw" class="text-muted" disabled={isSubmitting}>
-										<i class="mdi mdi-lock me-1" /> Forgot your password?
+										<i class="mdi mdi-lock me-1" /> {$_('Forgot your password?')}
 									</Link>
 								</div>
 								{/if}
@@ -247,13 +247,13 @@
 				</Card>
 				<div class="mt-5 text-center">
 					<p hidden={!(PUBLIC_ALLOW_SIGNUP === 'true')}>
-						Don&apos;t have an account ?
-						<Link href="register" class="fw-medium text-primary" disabled={isSubmitting}>Signup now</Link>
+						{$_("Don't have an account ?")}
+						<Link href="register" class="fw-medium text-primary" disabled={isSubmitting}>{$_('Signup now')}</Link>
 					</p>
 					<p>
 						© {new Date().getFullYear()}
-						{PUBLIC_COMPANY_NAME}. Crafted with
-						<i class="mdi mdi-heart text-danger" /> by open source community
+						{PUBLIC_COMPANY_NAME}. {$_('Crafted with')}
+						<i class="mdi mdi-heart text-danger" /> {$_('by open source community')}
 					</p>
 				</div>
 			</Col>
